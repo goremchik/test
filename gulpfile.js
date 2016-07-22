@@ -98,8 +98,7 @@ gulp.task('commit', function() {
 	//.on('end', function() {
 		.pipe(push({                      
             repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',
-            refspec: '',
-			args: ''
+            branch: 'master'
         }));
 		//git.push('origin', 'master', function(err) {
 		//	if(err) throw (err);
