@@ -95,7 +95,7 @@ gulp.task('commit', function() {
 	.pipe(git.add())
     .pipe(git.commit('initial commit'))
 	.on('end', function() {
-		git.push('origin', 'master', '-u goremchik', function(err) {
+		git.push('https://goremchik:Andrey-G0rem@github.com/goremchik/test.git', function(err) {
 			if(err) throw (err);
 		});
 	});
