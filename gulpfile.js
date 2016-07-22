@@ -92,14 +92,24 @@ gulp.task('jsFix', function() {
 });
 
 
-gulp.task('commit', function() {
+gulp.task('add', function() {
     return gulp.src(['build/*', 'src/*', 'documentation/*', 'README.md'])
 	.pipe(git.add())
-    .pipe(git.commit('initial commit'))
-	.pipe(push({                      
-        repository: 'https://goremchik@github.com/goremchik/test.git',
-        branch: 'master'
-    }));
+    //.pipe(git.commit('initial commit'))
+	//.pipe(push({                      
+    //    repository: 'https://goremchik@github.com/goremchik/test.git',
+   //    branch: 'master'
+    //}));
+});
+
+gulp.task('commit', function() {
+    return gulp.src('*')
+
+    .pipe(git.commit('initial commit'));
+	//.pipe(push({                      
+    //    repository: 'https://goremchik@github.com/goremchik/test.git',
+   //    branch: 'master'
+    //}));
 });
 
 
