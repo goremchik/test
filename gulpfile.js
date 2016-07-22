@@ -105,12 +105,12 @@ gulp.task('commit', function() {
     return gulp.src('*')
     .pipe(git.commit('initial commit'))
 	.pipe(prompt.prompt({
-    //    type: 'password',
-    //    name: 'pass',
-    //    message: 'Please enter your password'
-   // }, function(res){
-   //     pass = res.pass;
-	//	gulp.start('push');
+        type: 'password',
+        name: 'pass',
+        message: 'Please enter your password'
+    }, function(res){
+        pass = res.pass;
+		//gulp.start('push');
     }));
 });
 
