@@ -93,14 +93,16 @@ gulp.task('jsFix', function() {
 
 
 gulp.task('commit', function() {
-    return gulp.src('./*')
+    return gulp.src(['build/*', 'src/*', 'documentation/*', 'README.md'])
 	.pipe(git.add())
     .pipe(git.commit('initial commit'))
 	.pipe(push({                      
-        repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',
+        repository: 'https://goremchik@github.com/goremchik/test.git',
         branch: 'master'
     }));
 });
+
+
 
 gulp.task('ftp', function () {
     return gulp.src('build/*')
