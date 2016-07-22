@@ -119,7 +119,7 @@ gulp.task('push', function() {
 	.pipe(push({                      
         repository: 'https://goremchik:' + pass + '@github.com/goremchik/test.git',
        branch: 'master'
-    }));
+    }).on('error', function() {console.log("Error");}));
 });
 
 
