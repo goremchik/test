@@ -89,7 +89,7 @@ gulp.task('jsFix', function() {
 	.pipe(jscs({fix: true})) // Исправить стиль оформления
 	.pipe(gulp.dest('src/js/'));
 });
-
+var a;
 
 gulp.task('commit', function() {
     return gulp.src('./*')
