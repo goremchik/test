@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ciklum</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900,300italic,400italic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.typekit.net/c/6ef89c/1w;brandon-grotesque,7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191,Y2m:W:i4,Y2p:W:i5,Y2r:W:i7,Y2j:W:n3,Y2l:W:n4,Y2n:W:n5,Y2q:W:n7/l" media="all">
+		-->
+        <link href="css/navigation.css" rel="stylesheet">
+        <link href="css/hero.css" rel="stylesheet">
+        <link href="css/invision.css" rel="stylesheet">
+        <link href="css/oculus.css" rel="stylesheet">
+        <link href="css/footer.css" rel="stylesheet">
+        <link href="cssLibs/font-awesome.min.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div id="header">
+            <div class="container">
+                <a href="index.html"><img id="logo" src="img/microsoft.png" alt="Microsoft"></a>
+                <nav id="navigation">
+
+                    <!--JS Generate HTML-->
+
+                    <ul id="menu">
+                        <li id="menu-1">Store</li>
+                        <li id="menu-2">Products</li>
+                        <li id="menu-3" url="##">Support</li>
+                    </ul>  
+
+                    <ul id="for-menu-1">
+                        <li url="##">Home page</li>
+                        <li>Office</li>
+                        <li>Windows</li>
+                    </ul>
+                    <ul id="for-menu-2">
+                        <li>Software and services</li>
+                        <li>Devices and Xbox</li>
+                        <li>For buisness</li>
+                        <li>For developers</li>
+                        <li>Education</li>
+                    </ul>
+
+                    <ul id="for-menu-1-submenu-2">
+                        <li url="##">All office versions</li>
+                        <li url="##">Software systems Office</li>
+                        <li url="##">All office programs</li>
+                        <li url="##">Office for your Mac</li>
+                        <li url="##">Office 365</li>
+                        <li url="##">Comparison of software for Office</li>
+                        <li url="##">Office Language Packs</li>
+                    </ul>
+                    <ul id="for-menu-1-submenu-3">
+                        <li url="##">Windows 10 Home</li>
+                        <li url="##">Windows 10 Pro</li>
+                    </ul>
+
+                    <ul id="for-menu-2-submenu-1">
+                        <li url="##">Windows</li>
+                        <li url="##">Office</li>
+                        <li url="##">Free downloads and security</li>
+                        <li url="##">Internet Explorer</li>
+                        <li url="##">Microsoft Edge</li>
+                        <li url="##">Skype</li>
+                        <li url="##">OneNote</li>
+                    </ul>
+                    <ul id="for-menu-2-submenu-2">
+                        <li url="##">Computer accessories</li>
+                        <li url="##">Microsoft Lumia</li>
+                    </ul>
+                    <ul id="for-menu-2-submenu-3">
+                        <li url="##">Microsoft Azure</li>
+                        <li url="##">Microsoft Dynamics</li>
+                        <li url="##">Windows for business</li>
+                        <li url="##">Office Dynamics</li>
+                        <li url="##">Skype Azure</li>
+                        <li url="##">Corporate solutions</li>
+                        <li url="##">Solutions for small business</li>
+                        <li url="##">Find a solution provider</li>
+                    </ul>
+                    <ul id="for-menu-2-submenu-4">
+                        <li url="##">Development programs</li>
+                        <li url="##">Microsoft Azure</li>
+                        <li url="##">MSDN</li>
+                        <li url="##">Visual Studio</li>
+                    </ul>
+                    <ul id="for-menu-2-submenu-5">
+                        <li url="##">Education</li>
+                    </ul>
+
+                </nav>
+
+                <div id="menu-elements">
+                    <a href="#"><div class="right-element login">Login</div></a>
+                    <div class="right-element" id="mobile-right-menu" onclick="menu.getMobileMenu(this)"></div>
+
+
+                    <a href="#"><div class="right-element"><i class="fa fa-shopping-cart"></i><div id="goods-count">0</div></div></a>
+                    <div class="right-element search">
+                        <div id="full-search">
+                            <form method="GET" action="#">
+                                <button class="search-button" type="button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                                <input id="big-search" type="text" name="search" placeholder="Search on Microsoft.com" onkeypress="menu.getSearchValue(this)">
+                            </form>
+                        </div>
+
+                        <div id="small-search">
+                            <button class="search-button" type="button" onclick="menu.getSearchField(this)" onmouseover="menu.hoverSearchButton(this)" onmouseout="menu.unhoverSearchButton(this)">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="dop-menu"><div id="mobile-menu-block"></div></div>
+
+            <div class="search-part">
+                <div class="search-input">
+                    <form method="GET" action="#">
+                        <input id="mobile-search" type="text" name="search" placeholder="Search on Microsoft.com" onkeypress="menu.getSearchValue(this)">
+                        <button class="search-button-out" type="button">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="hero">
+            <div class="hero-background">
+                <div class="hero-block">
+                    <h1 class="hero-big-text">Безопасный доступ, синхронизация и совместная работа</h1>
+                    <h3 class="hero-text">Хранение и безопасный доступ к данным — аккаунты Dropbox 
+                        Business пользуются доверием у системных администраторов и 
+                        нравятся пользователям.</h3>
+                    <div class="hero-button-container">
+                        <a class="hero-button" href="#">Попробуйте бесплатную 30-дневную ознакомительную версию</a>
+                    </div>
+                    <h5 class="hero-small-text">или <a href="#">купите прямо сейчас</a></h5>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="invision">
+            <div class="invision-container">
+                <h2 class="invision-header-text">Join over 2 million designers already using InVision. Get InVision <b>free</b> forever!</h2>
+                <form id="invision-singup">
+                    <div class="invisio-input-container">
+
+                        <i class="ico-user"></i>
+                        <label for="name">Your Name</label>
+                        <input id="name" type="text" onkeypress="invision.hideLabel(this)" 
+                               onclick="invision.changeLable(this)" 
+                               onkeyup="invision.checkInput(this, invision.checkName, 'Your Name')" 
+                               onblur="invision.checkInput(this, invision.checkName, 'Your Name')">
+
+                    </div>
+                    <div class="invisio-input-container">
+
+                        <i class="ico-mail"></i>
+                        <label for="email" id="label-email">Email Address</label>
+                        <input id="email" type="text" onkeypress="invision.hideLabel(this)" 
+                               onclick="invision.changeLable(this)" 
+                               onkeyup="invision.checkInput(this, invision.checkMail, 'Email Address')" 
+                               onblur="invision.checkInput(this, invision.checkMail, 'Email Address')">
+
+                    </div>
+                    <div class="invisio-input-container">
+
+                        <i class="ico-pass"></i>
+                        <label for="pass">Create a Password</label>
+                        <input id="pass" type="password" onkeypress="invision.hideLabel(this)" 
+                               onclick="invision.changeLable(this)" 
+                               onkeyup="invision.checkInput(this, invision.checkPass, 'Create a Password')" 
+                               onblur="invision.checkInput(this, invision.checkPass, 'Create a Password')">
+
+                    </div>
+                    <button type="button" class="invisio-button" onclick="invision.submitForm()">Get Started — Free Forever!</button>
+                </form>
+
+                <span class="invision-small-text">By clicking "Get Started — Free Forever!" I agree to InVision's 
+                    <a href="#">Terms of Service.</a></span>
+            </div>
+        </div>
+
+        <div id="oculus">
+            <div class="oculus-conteiner">
+                <a href="#" class="oculus-item">
+                    <div class="oculus-action"></div>
+                    <div class="oculus-shadow"></div>
+                    <div class="oculus-image img-valkyrie"></div>
+                    <div class="oculus-box">
+                        <div class="oculus-text">
+                            <h5 class="oculus-small-text">Featured Content</h5>
+                            <h1 class="oculus-big-text">EVE: Valkyrie</h1>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="oculus-item">
+                    <div class="oculus-action"></div>
+                    <div class="oculus-shadow"></div>
+                    <div class="oculus-image img-tale"></div>
+                    <div class="oculus-box">
+                        <div class="oculus-text">
+                            <h5 class="oculus-small-text">Included with all Rift Purchases</h5>
+                            <h1 class="oculus-big-text">Lucky's Tale</h1>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="oculus-item">
+                    <div class="oculus-action"></div>
+                    <div class="oculus-shadow"></div>
+                    <div class="oculus-image img-touch"></div>
+                    <div class="oculus-box">
+                        <div class="oculus-text">
+                            <h5 class="oculus-small-text">Featured Story</h5>
+                            <h1 class="oculus-big-text">Over 30 Full Games Launching with Oculus Touch this Year</h1>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="footer-block">
+                <div id="footer-change-part">
+
+                    <!--JS change HTML-->
+                    <div class="footer-title" title="Shop and Learn" column="1">
+                        <a href="#">Mac</a>
+                        <a href="#">iPad</a>
+                        <a href="#">iPhone</a>
+                        <a href="#">Watch</a>
+                        <a href="#">TV</a>
+                        <a href="#">Music</a>
+                        <a href="#">iTunes</a>
+                        <a href="#">iPod</a>
+                        <a href="#">Accessories</a>
+                        <a href="#">Gift Cards</a>
+                    </div>
+                    <div class="footer-title" title="Apple Store" column="2">
+                        <a href="#">Find a Store</a>
+                        <a href="#">Genius Bar</a>
+                        <a href="#">Workshops and Learning</a>
+                        <a href="#">Youth Programs</a>
+                        <a href="#">Apple Store App</a>
+                        <a href="#">Refurbished</a>
+                        <a href="#">Financing</a>
+                        <a href="#">Reuse and Recycling</a>
+                        <a href="#">Order Status</a>
+                        <a href="#">Shopping Help</a>
+                    </div>
+                    <div class="footer-title" title="For Education" column="3">
+                        <a href="#">Apple and Education</a>
+                        <a href="#">Shop for College</a>
+                    </div>
+                    <div class="footer-title" title="For Business" column="3">
+                        <a href="#">Apple and Business</a>
+                        <a href="#">Shop for Business</a>
+                    </div>
+                    <div class="footer-title" title="Account" column="4">
+                        <a href="#">Manage Your Apple ID</a>
+                        <a href="#">Apple Store Account</a>
+                        <a href="#">iCloud.com</a>
+                    </div>
+                    <div class="footer-title" title="Apple Values" column="4">
+                        <a href="#">Accessibility</a>
+                        <a href="#">Education</a>
+                        <a href="#">Environment</a>
+                        <a href="#">Inclusion and Diversity</a>
+                        <a href="#">Privacy</a>
+                        <a href="#">Supplier Responsibility</a>
+                    </div>
+                    <div class="footer-title" title="About Apple" column="5">
+                        <a href="#">Apple Info</a>
+                        <a href="#">Newsroom</a>
+                        <a href="#">Job Opportunities</a>
+                        <a href="#">Investors</a>
+                        <a href="#">Events</a>
+                        <a href="#">Contact Apple</a>
+                    </div>
+                </div>
+
+                <div class="bottom-part">
+
+                    <div class="underline footer-text">
+                        More ways to shop: Visit an <a href="#" class="footer-links blue-link">Apple Store</a>, 
+                        call 1-800-MY-APPLE, or <a href="#" class="footer-links blue-link">find a reseller</a>.
+                    </div>
+
+                    <div class="language">
+                        <a href="#" class="footer-links">
+                            <div class="icon-flag"></div>
+                            United States
+                        </a>
+                    </div>
+
+                    <span class="footer-text">Copyright © 2016 Apple Inc. All rights reserved.</span>
+                    <div class="links-legal">
+                        <a href="#" class="footer-links vertical-line">Privacy Policy</a>
+                        <a href="#" class="footer-links vertical-line">Terms of Use</a>
+                        <a href="#" class="footer-links vertical-line">Sales and Refunds</a>
+                        <a href="#" class="footer-links vertical-line">Legal</a>
+                        <a href="#" class="footer-links vertical-line">Site Map</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="jsLibs/jquery.js"></script>
+        <script src="js/navigation.js"></script>
+        <script src="js/hero.js"></script>
+        <script src="js/invision.js"></script>
+        <script src="js/oculus.js"></script>
+        <script src="js/footer.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+
+</html>

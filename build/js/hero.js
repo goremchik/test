@@ -1,0 +1,1 @@
+function Hero(){this.smallDisplay=768,this.changeHero=function(){if(window.innerWidth<=this.smallDisplay){var i=document.getElementsByClassName("hero-button")[0],n=window.innerWidth-120;i.style.width=n+"px"}}}

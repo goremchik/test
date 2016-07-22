@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: footer.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: footer.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Wraps an object and returns a {@link Sequence}. For `null` or `undefined`,
+ * simply returns an empty sequence (see {@link Lazy.strict} for a stricter
+ * implementation).
+ *
+ * - For **arrays**, Lazy will create a sequence comprising the elements in
+ *   the array (an {@link ArrayLikeSequence}).
+ * - For **objects**, Lazy will create a sequence of key/value pairs
+ *   (an {@link ObjectLikeSequence}).
+ * - For **strings**, Lazy will create a sequence of characters (a
+ *   {@link StringLikeSequence}).
+ *
+ * @public
+ * @param {Array|Object|string} source An array, object, or string to wrap.
+ * @returns {Sequence} The wrapped lazy object.
+ *
+ *
+ * @examples
+ * Lazy([1, 2, 4])       // instanceof Lazy.ArrayLikeSequence
+ * Lazy({ foo: "bar" })  // instanceof Lazy.ObjectLikeSequence
+ * Lazy("hello, world!") // instanceof Lazy.StringLikeSequence
+ * Lazy()                // sequence: []
+ * Lazy(null)            // sequence: []
+ */
+
+function Footer(changePart, title) {
+    this.elements = [];
+    this.smallDisplay = 768;
+    this.changePart = document.getElementById(changePart);
+    Main.call(this);
+    var titles = document.getElementsByClassName(title);
+    console.log(titles);
+    for (var i = 0; i &lt; titles.length; i++) {
+        var element = {
+            hide: true,
+            title: titles[i].getAttribute('title'),
+            column: titles[i].getAttribute('column'),
+            links: this.getLinks(titles[i].getElementsByTagName('a'))
+        };
+        this.elements.push(element);
+    }  //    console.log(this.elements);
+}
+
+Footer.prototype.getLinks = function (elements) {
+    var arr = [];
+    for (var i = 0; i &lt; elements.length; i++) {
+        var obj = {
+            name: elements[i].innerText,
+            url: elements[i].getAttribute('href')
+        };
+        arr.push(obj);
+    }
+    return arr;
+};
+
+Footer.prototype.createFooter = function () {
+    if (window.innerWidth >= this.smallDisplay) {
+        this.createBig();
+    } else {
+        this.createSmall();
+    }
+};
+Footer.prototype.createSmall = function () {
+    var html = '';
+    for (var i = 0; i &lt; this.elements.length; i++) {
+        html += '&lt;div class="link-block underline">&lt;h5 class="link-title" idd="' + i + '" onclick="footer.dropdown(this)">' + this.elements[i].title;
+        html += '&lt;div class="plus-link">+&lt;/div>&lt;/h5>&lt;div class="can-hide' + (this.elements[i].hide ? ' hide' : '') + '">';
+        html += this.drawlinksBlock(this.elements[i].links);
+        html += '&lt;/div>&lt;/div>';
+    }
+    this.changePart.innerHTML = html;
+};
+Footer.prototype.createBig = function () {
+    var html = '';
+    var column = 0;
+    for (var i = 0; i &lt; this.elements.length; i++) {
+        if (column != this.elements[i].column) {
+            column = this.elements[i].column;
+            html += '&lt;div class="footer-column">';
+        }
+        html += '&lt;div class="link-block">&lt;h5 class="link-title">' + this.elements[i].title + '&lt;/h5>';
+        html += this.drawlinksBlock(this.elements[i].links);
+        html += '&lt;/div>';
+        if (i + 1 === this.elements.length) {
+            html += '&lt;/div>';
+        } else if (column != this.elements[i + 1].column) {
+            html += '&lt;/div>';
+        }
+    }
+    this.changePart.innerHTML = html;
+};
+Footer.prototype.drawlinksBlock = function (links) {
+    var html = '';
+    for (var i = 0; i &lt; links.length; i++) {
+        html += '&lt;div class="column-links">&lt;a class="footer-links" href="' + links[i].url + '">&lt;div class="wide-link">' + links[i].name + '&lt;/div>&lt;/a>&lt;/div>';
+    }
+    return html;
+};
+Footer.prototype.dropdown = function (element) {
+    var plus = element.getElementsByClassName('plus-link')[0];
+    var id = element.getAttribute('idd');
+    this.elements[id].hide = !this.elements[id].hide;
+    var canHide = element.parentNode.getElementsByClassName('can-hide')[0];
+    if (!this.elements[id].hide) {
+        plus.style.transform = 'rotate(45deg)';
+        canHide.classList.remove('hide');
+    } else {
+        plus.style.transform = 'rotate(0deg)';
+        //        $(element.parentNode).animate({heigh: '0px'}, 900, function () {
+        canHide.classList.add('hide');  //        });
+    }
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Fri Jul 22 2016 10:24:13 GMT+0300 (FLE Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
