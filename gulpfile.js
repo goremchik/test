@@ -97,7 +97,7 @@ gulp.task('commit', function() {
     .pipe(git.commit('initial commit'))
 	//.on('end', function() {
 		.pipe(push({                      
-            repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',
+            repository: 'https://goremchik@github.com/goremchik/test.git',
             refspec: 'HEAD'
         }));
 		//git.push('origin', 'master', function(err) {
