@@ -106,8 +106,9 @@ gulp.task('commit', function() {
 	var pass = process.argv[process.argv.indexOf('-p') + 1];
 
     return gulp.src('*')
-
+	
     .pipe(git.commit('initial commit'))
+	.pipe(prompt.confirm('Are you ready for Gulp?'))
 	.pipe(push({                      
         repository: 'https://goremchik:' + pass + '@github.com/goremchik/test.git',
        branch: 'master'
