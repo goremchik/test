@@ -89,7 +89,7 @@ gulp.task('jsFix', function() {
 	.pipe(jscs({fix: true})) // Исправить стиль оформления
 	.pipe(gulp.dest('src/js/'));
 });
-var a;
+
 
 gulp.task('commit', function() {
     return gulp.src('./*')
@@ -97,7 +97,9 @@ gulp.task('commit', function() {
     .pipe(git.commit('initial commit'))
 	//.on('end', function() {
 		.pipe(push({                      
-            repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git'
+            repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',
+            refspec: '',
+			args: ''
         }));
 		//git.push('origin', 'master', function(err) {
 		//	if(err) throw (err);
