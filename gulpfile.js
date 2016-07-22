@@ -18,7 +18,8 @@ var gulp = require('gulp'),
 	git = require('gulp-git'),
 	push = require('gulp-git-push'),
 	gutil = require('gulp-util'),
-	ftp = require('gulp-ftp');
+	ftp = require('gulp-ftp'), 
+	prompt = require('gulp-prompt')
 
 	
 gulp.task('js', function () {
