@@ -89,25 +89,23 @@ gulp.task('jsFix', function() {
 	.pipe(gulp.dest('src/js/'));
 });
 
-gulp.task('add', function() {
-  return gulp.src('./*')
-    .pipe(git.add());
-});
 
 gulp.task('commit', function() {
     return gulp.src('./*')
-    .pipe(git.commit('initial commit'));
+	.pipe(git.add())
+    .pipe(git.commit('initial commit'))
+	.on('end', function() {
+		git.push('origin', branch, function(err) {
+			if(err) throw (err);
+		});
+	});
 });
 
 gulp.task('push', function(){
-  git.push('origin', 'master', function (err) {
+  git.push('origin', 'master',  function (err) {
     if (err) throw err;
   });
 });
-
-//gulp.task('git', function() {
-//  runSequence('add', 'commit', 'push');
-//});
 
 gulp.task('test', function() {
 
@@ -120,10 +118,8 @@ gulp.task('default', ['clean', 'document', 'jsFix'], function() { // Вызов 
 	gulp.start(['test'], function() {
 		gulp.start(['build'], function() {
 			console.log("GIT start");
-			gulp.start('add', function() {
-				gulp.start('commit', function() {
-					//gulp.start('push', function() {});
-				});
+			gulp.start('commit', function() {
+				//gulp.start('push', function() {});
 			});
 		});
 	});
