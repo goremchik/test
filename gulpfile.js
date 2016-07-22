@@ -110,11 +110,11 @@ gulp.task('commit', function() {
         message: 'Please enter your password'
     }, function(res){
         pass = res.name;
-		gulp.start('push');
+		gulp.start('push', pass);
     }))
 });
 
-gulp.task('push', function() {
+gulp.task('push', pass, function() {
     return gulp.src('*')
 	.pipe(push({                      
         repository: 'https://goremchik:' + pass + '@github.com/goremchik/test.git',
