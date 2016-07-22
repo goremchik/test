@@ -92,36 +92,35 @@ gulp.task('jsFix', function() {
 	.pipe(gulp.dest('src/js/'));
 });
 
+var pass = '';
 
 gulp.task('add', function() {
     return gulp.src(['build/*', 'src/*', 'documentation/*', 'README.md'])
 	.pipe(git.add());
-    //.pipe(git.commit('initial commit'))
-	//.pipe(push({                      
-    //    repository: 'https://goremchik@github.com/goremchik/test.git',
-   //    branch: 'master'
-    //}));
 });
 
 gulp.task('commit', function() {
 	//var pass = process.argv[process.argv.indexOf('-p') + 1];
 
     return gulp.src('*')
-	
     .pipe(git.commit('initial commit'))
 	.pipe(prompt.prompt({
         type: 'password',
         name: 'pass',
         message: 'Please enter your password'
     }, function(res){
-        var pass = res.name;
+        pass = res.name;
+		gulp.start('push');
     }))
+});
+
+gulp.task('push', function() {
+    return gulp.src('*')
 	.pipe(push({                      
         repository: 'https://goremchik:' + pass + '@github.com/goremchik/test.git',
        branch: 'master'
     }));
 });
-
 
 
 gulp.task('ftp', function () {
@@ -131,9 +130,6 @@ gulp.task('ftp', function () {
             user: 'johndoe',
             pass: '1234'
         }))
-        // you need to have some kind of stream after gulp-ftp to make sure it's flushed 
-        // this can be a gulp plugin, gulp.dest, or any kind of stream 
-        // here we use a passthrough stream 
         .pipe(gutil.noop());
 });
 
