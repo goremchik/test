@@ -109,7 +109,7 @@ gulp.task('commit', function() {
         name: 'pass',
         message: 'Please enter your password'
     }, function(res){
-        console.log(res.name);
+        pass = res.pass;
 		gulp.start('push');
     }))
 });
