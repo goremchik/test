@@ -92,21 +92,13 @@ gulp.task('jsFix', function() {
 
 
 gulp.task('commit', function() {
-	git.pull('origin', 'master', function (err) {
-    if (err) throw err;
-  });
     return gulp.src('./*')
 	.pipe(git.add())
     .pipe(git.commit('initial commit'))
-	//.on('end', function() {
-		.pipe(push({                      
-            repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',
-            branch: 'master'
-        }));
-		//git.push('origin', 'master', function(err) {
-		//	if(err) throw (err);
-		//});
-	//});
+	.pipe(push({                      
+        repository: 'https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',
+        branch: 'master'
+    }));
 });
 
 gulp.task('pull', function(){
