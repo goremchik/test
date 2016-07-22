@@ -104,12 +104,18 @@ gulp.task('add', function() {
 });
 
 gulp.task('commit', function() {
-	var pass = process.argv[process.argv.indexOf('-p') + 1];
+	//var pass = process.argv[process.argv.indexOf('-p') + 1];
 
     return gulp.src('*')
 	
     .pipe(git.commit('initial commit'))
-	.pipe(prompt.confirm('Are you ready for Gulp?'))
+	.pipe(prompt.prompt({
+        type: 'password',
+        name: 'pass',
+        message: 'Please enter your password'
+    }, function(res){
+        var pass = res.name;
+    }))
 	.pipe(push({                      
         repository: 'https://goremchik:' + pass + '@github.com/goremchik/test.git',
        branch: 'master'
