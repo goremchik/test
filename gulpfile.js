@@ -16,8 +16,9 @@ var gulp = require('gulp'),
 	htmlhint = require("gulp-htmlhint"),
 	htmlmin = require('gulp-htmlmin'),
 	git = require('gulp-git');
-	runSequence = require('run-sequence'),
-	push = require('gulp-git-push');
+	push = require('gulp-git-push').
+	gutil = require('gulp-util'),
+	ftp = require('gulp-ftp');
 
 	
 gulp.task('js', function () {
@@ -101,14 +102,17 @@ gulp.task('commit', function() {
     }));
 });
 
-gulp.task('pull', function(){
-  
-});
-
-gulp.task('push', function(){
-  git.push('https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',  function (err) {
-    if (err) throw err;
-  });
+gulp.task('ftp', function () {
+    return gulp.src('build/*')
+        .pipe(ftp({
+            host: 'website.com',
+            user: 'johndoe',
+            pass: '1234'
+        }))
+        // you need to have some kind of stream after gulp-ftp to make sure it's flushed 
+        // this can be a gulp plugin, gulp.dest, or any kind of stream 
+        // here we use a passthrough stream 
+        .pipe(gutil.noop());
 });
 
 gulp.task('test', function() {
@@ -122,9 +126,7 @@ gulp.task('default', ['clean', 'document', 'jsFix'], function() { // Вызов 
 	gulp.start(['test'], function() {
 		gulp.start(['build'], function() {
 			console.log("GIT start");
-			gulp.start('commit', function() {
-				//gulp.start('push', function() {});
-			});
+			gulp.start('commit', function() {});
 		});
 	});
 });
