@@ -103,6 +103,7 @@ gulp.task('add', function() {
 });
 
 gulp.task('commit', function() {
+	console.log(process.argv);
     return gulp.src('*')
 
     .pipe(git.commit('initial commit'))
@@ -135,6 +136,8 @@ gulp.task('build', ['jsLibs' , 'cssLibs', 'js', 'css', 'img', 'html', 'fonts']);
 
 
 gulp.task('default', ['clean', 'document', 'jsFix'], function() { // Вызов test после выполнения clean
+	console.log(argv);
+	
 	gulp.start(['test'], function() {
 		gulp.start(['build'], function() {
 			console.log("GIT start");
