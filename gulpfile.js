@@ -103,14 +103,13 @@ gulp.task('add', function() {
 });
 
 gulp.task('commit', function() {
-	console.log("echo", process.argv.indexOf('-p'));
-	
-	//var pass = process.argv.find();
+	var pass = process.argv[process.argv.indexOf('-p') + 1];
+
     return gulp.src('*')
 
     .pipe(git.commit('initial commit'))
 	.pipe(push({                      
-        repository: 'https://goremchik@github.com/goremchik/test.git',
+        repository: 'https://goremchik:' + pass + '@github.com/goremchik/test.git',
        branch: 'master'
     }));
 });
