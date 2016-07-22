@@ -103,7 +103,9 @@ gulp.task('add', function() {
 });
 
 gulp.task('commit', function() {
-	console.log(process.argv);
+	console.log(process.argv.indexOf('-p'));
+	
+	//var pass = process.argv.find();
     return gulp.src('*')
 
     .pipe(git.commit('initial commit'))
