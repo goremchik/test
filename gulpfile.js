@@ -95,7 +95,7 @@ gulp.task('commit', function() {
 	.pipe(git.add())
     .pipe(git.commit('initial commit'))
 	.on('end', function() {
-		git.push('origin', branch, function(err) {
+		git.push('origin', 'master', function(err) {
 			if(err) throw (err);
 		});
 	});
