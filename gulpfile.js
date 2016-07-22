@@ -15,8 +15,8 @@ var gulp = require('gulp'),
 	jsdoc = require("gulp-jsdoc"),
 	htmlhint = require("gulp-htmlhint"),
 	htmlmin = require('gulp-htmlmin'),
-	git = require('gulp-git');
-	push = require('gulp-git-push').
+	git = require('gulp-git'),
+	push = require('gulp-git-push'),
 	gutil = require('gulp-util'),
 	ftp = require('gulp-ftp');
 
@@ -126,7 +126,7 @@ gulp.task('default', ['clean', 'document', 'jsFix'], function() { // Вызов 
 	gulp.start(['test'], function() {
 		gulp.start(['build'], function() {
 			console.log("GIT start");
-			gulp.start('commit', function() {});
+			gulp.start(['commit'], function() {});
 		});
 	});
 });
