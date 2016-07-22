@@ -92,6 +92,9 @@ gulp.task('jsFix', function() {
 
 
 gulp.task('commit', function() {
+	git.pull('origin', 'master', function (err) {
+    if (err) throw err;
+  });
     return gulp.src('./*')
 	.pipe(git.add())
     .pipe(git.commit('initial commit'))
@@ -104,6 +107,10 @@ gulp.task('commit', function() {
 		//	if(err) throw (err);
 		//});
 	//});
+});
+
+gulp.task('pull', function(){
+  
 });
 
 gulp.task('push', function(){
