@@ -17,6 +17,7 @@ var gulp = require('gulp'),
 	htmlmin = require('gulp-htmlmin'),
 	git = require('gulp-git');
 	runSequence = require('run-sequence'),
+	push = require('gulp-git-push');
 
 	
 gulp.task('js', function () {
@@ -94,15 +95,19 @@ gulp.task('commit', function() {
     return gulp.src('./*')
 	.pipe(git.add())
     .pipe(git.commit('initial commit'))
-	.on('end', function() {
-		git.push('https://goremchik:Andrey-G0rem@github.com/goremchik/test.git', function(err) {
-			if(err) throw (err);
-		});
-	});
+	//.on('end', function() {
+		.pipe(push({                      
+            repository: 'origin',
+            refspec: 'HEAD'
+        }));
+		//git.push('origin', 'master', function(err) {
+		//	if(err) throw (err);
+		//});
+	//});
 });
 
 gulp.task('push', function(){
-  git.push('origin', 'master',  function (err) {
+  git.push('https://goremchik:Andrey-G0rem@github.com/goremchik/test.git',  function (err) {
     if (err) throw err;
   });
 });
