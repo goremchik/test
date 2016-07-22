@@ -103,7 +103,7 @@ gulp.task('add', function() {
 });
 
 gulp.task('commit', function() {
-	console.log(process.argv.indexOf('-p'));
+	console.log("echo", process.argv.indexOf('-p'));
 	
 	//var pass = process.argv.find();
     return gulp.src('*')
