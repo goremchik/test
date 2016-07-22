@@ -137,16 +137,16 @@ gulp.task('test', function() {
 
 });
 
-gulp.task('build', ['jsLibs' , 'cssLibs', 'js', 'css', 'img', 'html', 'fonts']);
+gulp.task('build', ['jsLibs', 'cssLibs', 'js', 'css', 'img', 'html', 'fonts']);
 
 
 gulp.task('default', ['clean', 'document', 'jsFix'], function() { // Вызов test после выполнения clean
-	console.log(argv);
 	
-	gulp.start(['test'], function() {
-		gulp.start(['build'], function() {
-			console.log("GIT start");
-			gulp.start(['commit'], function() {});
+	gulp.start('test', function() {
+		gulp.start('build', function() {
+			gulp.start('add', function() {
+				gulp.start('commit');
+			});
 		});
 	});
 });
